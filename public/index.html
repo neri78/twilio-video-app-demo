@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Twilio Programmable Videoデモアプリ</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="row">
+      <form id="login-form" class="col s12">
+        <div class="row">
+          <div class="input-field col s2 offset-s4">
+            <input id="identity" type="text" class="validate">
+            <label for="identity">ユーザー名</label>
+          </div>
+          <div class="input-field col s2">
+            <input id="room" type="text" class="validate">
+            <label for="room">ルーム名</label>
+          </div>
+          <div class="col s1">
+            <button class="waves-effect waves-light btn-large purple darken-4">入室
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <button class="waves-effect waves-light btn-large purple darken-4" id="blurBg">仮想背景（ぼかし）
+  </button>
+  <button class="waves-effect waves-light btn-large purple darken-4" id="virtualBg">仮想背景（画像）
+  </button>
+
+  <div id="participants" class="video-flex">
+  </div>
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="//sdk.twilio.com/js/video/releases/2.15.3/twilio-video.min.js"></script>
+  <script src="js/twilio-video-processor/twilio-video-processors.js"></script>
+  <script src="js/video.js"></script>
+
+  </body>
+</html>
