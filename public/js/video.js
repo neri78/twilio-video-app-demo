@@ -80,34 +80,34 @@ window.addEventListener('load', () => {
 
 
 async function startVideoChat(token, room) {
-    // Video Client SDKを使用し、Roomに接続（ビデオのみ）
-    videoTrack = await Twilio.Video.createLocalVideoTrack();
-    videoRoom = await Twilio.Video.connect(
-        token, {
-            name: room,
-            tracks: [videoTrack]
-     });
+    // // Video Client SDKを使用し、Roomに接続（ビデオのみ）
+    // videoTrack = await Twilio.Video.createLocalVideoTrack();
+    // videoRoom = await Twilio.Video.connect(
+    //     token, {
+    //         name: room,
+    //         tracks: [videoTrack]
+    //  });
 
-    // ローカル参加者を画面に追加    
-    participantConnected(videoRoom.localParticipant);
+    // // ローカル参加者を画面に追加    
+    // participantConnected(videoRoom.localParticipant);
  
-    // 現在のルーム参加者をページに追加
-    videoRoom.participants.forEach(participantConnected);
+    // // 現在のルーム参加者をページに追加
+    // videoRoom.participants.forEach(participantConnected);
 
-    // Roomに新たに参加者が追加された場合のイベントハンドラを指定
-    videoRoom.on('participantConnected', participantConnected);
+    // // Roomに新たに参加者が追加された場合のイベントハンドラを指定
+    // videoRoom.on('participantConnected', participantConnected);
     
-    // Roomから参加者が退出した場合のイベントハンドラを指定
-    videoRoom.on('participantDisconnected', participantDisconnected);
+    // // Roomから参加者が退出した場合のイベントハンドラを指定
+    // videoRoom.on('participantDisconnected', participantDisconnected);
 
-    // Roomから自分自身が退出した際の処理
-    videoRoom.once('disconnected', (room) => {
-        console.log(room.state);
-    })
+    // // Roomから自分自身が退出した際の処理
+    // videoRoom.once('disconnected', (room) => {
+    //     console.log(room.state);
+    // })
 
-    // ブラウザーのクローズやリロードの処理
-    window.addEventListener('beforeunload', tidyUp(videoRoom));
-    window.addEventListener('pagehide', tidyUp(videoRoom));
+    // // ブラウザーのクローズやリロードの処理
+    // window.addEventListener('beforeunload', tidyUp(videoRoom));
+    // window.addEventListener('pagehide', tidyUp(videoRoom));
 }
 
 function participantConnected(participant) {

@@ -21,40 +21,19 @@ app.all('/video-token', async (req, res) => {
     let roomObj;
 
     // 現在進行中のビデオルームを検索
-    let rooms = await client.video.rooms.list({ 
-        status: 'in-progress', 
-        uniqueName: room
-    });
 
     // ルームが存在する場合はそちらを利用
-    if (rooms.length)
-        roomObj = rooms[0];
-    else {
-
-        // そうでない場合はビデオルームを作成
-        roomObj = await client.video.rooms.create({
-            uniqueName: room,
-            type: 'go'
-        });
-    }
-
+    // そうでない場合はビデオルームを作成
+    
     const AccessTooken = twilio.jwt.AccessToken;
     const VideoGrant = AccessTooken.VideoGrant;
 
     // 特定のビデオルームのみに入室できる
-    const grant = new VideoGrant();
-    grant.room = roomObj.uniqueName;
-
+    
     // 上記の認可を有したアクセストークンを生成
-    const accessToken = new AccessTooken(
-        TWILIO_ACCOUNT_SID, 
-        TWILIO_API_KEY, 
-        TWILIO_API_SECRET);
-    accessToken.addGrant(grant);
-    accessToken.identity = identity;
-
+    
     // クライアント側にトークンを送信
-    res.send({ token: accessToken.toJwt(), room: roomObj.uniqueName });
+    
 
 });
 
