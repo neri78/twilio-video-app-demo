@@ -127,7 +127,6 @@ function participantConnected(participant) {
     // 参加者のトラック（映像、音声）をページに追加
     participant.tracks.forEach((trackPublication) => {
         trackPublished(trackPublication, participant);
-        
     })
 
     // 参加者が新しくパブリッシュした場合のイベントハンドラを登録
@@ -139,7 +138,7 @@ function trackPublished(trackPublication, participant) {
     // 事前に作成した参加者のIdentityをIDにした<div>要素を取得
     const el = document.getElementById(participant.identity);
 
-     // トラックがサブスクライブされた際の処理
+     // トラックの購読処理
      const trackSubscribed = (track) => {
         // trackの種類に合わせて<video> <audio>タグを要素に追加
         el.appendChild(track.attach())
@@ -147,7 +146,7 @@ function trackPublished(trackPublication, participant) {
         console.log(`${track}のサブスクライブ後処理を完了しました。`)
      };
 
-    // パブリッシュされたトラックがサブスクライブされている場合
+    // トラックの公開を通知
     if (trackPublication.track)
         trackSubscribed(trackPublication.track);
     
