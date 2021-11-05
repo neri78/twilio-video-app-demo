@@ -9,50 +9,50 @@ window.addEventListener('load', () => {
     const blurBgBtn = document.getElementById('blurBg');
     const virtualBgBtn = document.getElementById('virtualBg');
 
-    // 仮想背景（ぼかし）を有効・無効化
-    blurBgBtn.addEventListener('click', async() => {
-        if (videoTrack.processor)
-        {
-            videoTrack.removeProcessor(videoTrack.processor);
-        }
-        else{ 
-            if (!blurBg) {
-                blurBg = new Twilio.VideoProcessors.GaussianBlurBackgroundProcessor({
-                    assetsPath: '/js/twilio-video-processor',
-                    maskBlurRadius: 10,
-                    blurFilterRadius: 5,
-                });
-                await blurBg.loadModel();
-            }
-            videoTrack.addProcessor(blurBg);
-        }
-    });
+    // // 仮想背景（ぼかし）を有効・無効化
+    // blurBgBtn.addEventListener('click', async() => {
+    //     if (videoTrack.processor)
+    //     {
+    //         videoTrack.removeProcessor(videoTrack.processor);
+    //     }
+    //     else{ 
+    //         if (!blurBg) {
+    //             blurBg = new Twilio.VideoProcessors.GaussianBlurBackgroundProcessor({
+    //                 assetsPath: '/js/twilio-video-processor',
+    //                 maskBlurRadius: 10,
+    //                 blurFilterRadius: 5,
+    //             });
+    //             await blurBg.loadModel();
+    //         }
+    //         videoTrack.addProcessor(blurBg);
+    //     }
+    // });
 
-    // 仮想背景（画像）を有効・無効化
-    virtualBgBtn.addEventListener('click', async() => {
-        if (videoTrack.processor)
-        {
-            videoTrack.removeProcessor(videoTrack.processor);
-        }
-        else{ 
-            if (!virtualBg) {
-                let img = new Image();
-                img.src = '/images/2021.jpg';
-                img.onload = async () => {
-                    virtualBg = new Twilio.VideoProcessors.VirtualBackgroundProcessor({
-                        assetsPath: '/js/twilio-video-processor',
-                        backgroundImage: img,
-                        maskBlurRadius: 5,
-                    });
-                    await virtualBg.loadModel();
-                    console.log(virtualBg);
-                    videoTrack.addProcessor(virtualBg);
-                }
-            }
-            else
-                videoTrack.addProcessor(virtualBg);
-        }
-    });
+    // // 仮想背景（画像）を有効・無効化
+    // virtualBgBtn.addEventListener('click', async() => {
+    //     if (videoTrack.processor)
+    //     {
+    //         videoTrack.removeProcessor(videoTrack.processor);
+    //     }
+    //     else{ 
+    //         if (!virtualBg) {
+    //             let img = new Image();
+    //             img.src = '/images/2021.jpg';
+    //             img.onload = async () => {
+    //                 virtualBg = new Twilio.VideoProcessors.VirtualBackgroundProcessor({
+    //                     assetsPath: '/js/twilio-video-processor',
+    //                     backgroundImage: img,
+    //                     maskBlurRadius: 5,
+    //                 });
+    //                 await virtualBg.loadModel();
+    //                 console.log(virtualBg);
+    //                 videoTrack.addProcessor(virtualBg);
+    //             }
+    //         }
+    //         else
+    //             videoTrack.addProcessor(virtualBg);
+    //     }
+    // });
 
     // フォームに入力があった場合
     loginForm.addEventListener('submit', async (event) => {
