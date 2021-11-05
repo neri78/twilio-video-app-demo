@@ -88,7 +88,7 @@ async function startVideoChat(token, room) {
             tracks: [videoTrack]
      });
 
-    // ローカル参加者を画面に追加    
+    // ローカル参加者を自分の画面に追加    
     participantConnected(videoRoom.localParticipant);
  
     // 現在のルーム参加者をページに追加
