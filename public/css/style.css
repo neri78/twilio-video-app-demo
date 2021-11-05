@@ -21,3 +21,7 @@
 .video-element {
   margin: 20px;
 }
+
+video {
+  max-width: 660px;
+}
